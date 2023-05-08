@@ -28,7 +28,7 @@ public class RemoveDuplicatesFromSortedArray {
     /** Test Inputs
      * Add inputs to test
      */
-    public static void testRemoveDuplicates(){
+    private static void testRemoveDuplicates(){
         int[] nums = {1,1,2};
         int[] expectedNums = {1,2}; // The expected answer with correct length
 
@@ -43,7 +43,7 @@ public class RemoveDuplicatesFromSortedArray {
     /** Assertions
      * assertions for code
      */
-    public static void assertRemoveDuplicates(int[] nums, int[] expectedNums){
+    private static void assertRemoveDuplicates(int[] nums, int[] expectedNums){
 
         int k = removeDuplicates(nums); // Calls your implementation
 
