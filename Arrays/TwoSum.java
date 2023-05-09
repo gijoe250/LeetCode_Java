@@ -17,14 +17,16 @@ public class TwoSum {
      * Naive iteration
      */
     private static int[] twoSum(int[] nums, int target) {
+        int[] answer = {};
+
         for (int i=0; i< nums.length-1; i++){
             for (int j=1; j< nums.length; j++){
                 if (nums[j] + nums[i] == target && i != j){
-                    return new int[]{i,j};
+                    answer = new int[]{i,j};
                 }
             }
         }
-        return null;
+        return answer;
     }
 
     /**
