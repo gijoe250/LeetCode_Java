@@ -18,7 +18,6 @@ public class BestTimeToBuyAndSellStock {
         if (prices.length == 1){
             return 0;
         }
-        int oldBuy = 0;
         int oldProfit = 0;
         int newBuy = prices[0];
         int newSell = 0;
@@ -29,8 +28,7 @@ public class BestTimeToBuyAndSellStock {
                 continue;
             }
             if ((newBuy > prices[i] && newSell != 0)){
-                if(oldBuy == 0 || newProfit > oldProfit){
-                    oldBuy = newBuy;
+                if(oldProfit == 0 || newProfit > oldProfit){
                     oldProfit = newProfit;
                 }
                 newBuy = prices[i];
