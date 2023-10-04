@@ -44,20 +44,26 @@ public class ValidPalindrome {
             return true;
         }
         for (int i=0, j=s.length()-1; i<s.length()/2; i++, j--){
+            if(j > s.length()-1){
+                j--;
+            }
+            if(i < 0){
+                i++;
+            }
+
             System.out.println(s.charAt(i) + " " + s.charAt(j));
-            System.out.println("The character " + s.charAt(i) + " is alphanumeric: " + Character.isLetterOrDigit(s.charAt(i)));
-            System.out.println("The character " + s.charAt(j) + " is alphanumeric: " + Character.isLetterOrDigit(s.charAt(j)));
+            System.out.println("The character " + s.charAt(i) + i +" is alphanumeric: " + Character.isLetterOrDigit(s.charAt(i)));
+            System.out.println("The character " + s.charAt(j) + j +" is alphanumeric: " + Character.isLetterOrDigit(s.charAt(j)));
 
             if((!(Character.isLetterOrDigit(s.charAt(i))) || !(Character.isLetterOrDigit(s.charAt(j)))) && s.length() == 2 ){
-                return false;
+                return true;
             }
             if(!(Character.isLetterOrDigit(s.charAt(i))) && !(Character.isLetterOrDigit(s.charAt(j)))){
-                System.out.println(s.charAt(i) +" " +s.charAt(j));
                 continue;
             }
             if(!(Character.isLetterOrDigit(s.charAt(i)))){
                 j++;
-                System.out.println(s.charAt(i) +" " +s.charAt(j));
+                System.out.println(s.charAt(i));
                 continue;
             }
             if(!(Character.isLetterOrDigit(s.charAt(j)))){
@@ -66,7 +72,7 @@ public class ValidPalindrome {
                 continue;
             }
             if(Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))) {
-                return true;
+                return false;
             }
         }
 
@@ -101,6 +107,10 @@ public class ValidPalindrome {
         s = "ab_a";
         output = true;
         assertCode(s, output);
+
+        s = ",,,,,,,,,,,,acva";
+        output = false;
+        assertCode(s, output);
     }
 
     /** Assertions
@@ -108,6 +118,6 @@ public class ValidPalindrome {
      */
     private static void assertCode(String s, boolean answer){
         boolean result = isPalindrome(s);
-        assert result == answer : String.format("The answer \"%b\" for the string \"%s\" is not a palindrome", answer, s );
+        assert result == answer : String.format("The result \"%b\" and answer \"%b\" for the string \"%s\" is not a palindrome", result, answer, s );
     }
 }
