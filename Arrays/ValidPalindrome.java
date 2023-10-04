@@ -43,17 +43,20 @@ public class ValidPalindrome {
         if (s.length() == 1) {
             return true;
         }
-        for (int i=0, j=s.length()-1; i<s.length()/2; i++, j--){
+//        System.out.println(s);
+        for (int i=0, j=s.length()-1; i<s.length()-1; i++, j--){
             if(j > s.length()-1){
-                j--;
+                j = s.length()-1;
             }
             if(i < 0){
-                i++;
+                i = 0;
             }
-
-            System.out.println(s.charAt(i) + " " + s.charAt(j));
-            System.out.println("The character " + s.charAt(i) + i +" is alphanumeric: " + Character.isLetterOrDigit(s.charAt(i)));
-            System.out.println("The character " + s.charAt(j) + j +" is alphanumeric: " + Character.isLetterOrDigit(s.charAt(j)));
+            if(i >= j ){
+                return true;
+            }
+//            System.out.println(s.charAt(i) + " " + s.charAt(j));
+//            System.out.println("The character " + s.charAt(i) +" is alphanumeric: " + Character.isLetterOrDigit(s.charAt(i)));
+//            System.out.println("The character " + s.charAt(j) +" is alphanumeric: " + Character.isLetterOrDigit(s.charAt(j)));
 
             if((!(Character.isLetterOrDigit(s.charAt(i))) || !(Character.isLetterOrDigit(s.charAt(j)))) && s.length() == 2 ){
                 return true;
@@ -63,12 +66,12 @@ public class ValidPalindrome {
             }
             if(!(Character.isLetterOrDigit(s.charAt(i)))){
                 j++;
-                System.out.println(s.charAt(i));
+//                System.out.println(s.charAt(i));
                 continue;
             }
             if(!(Character.isLetterOrDigit(s.charAt(j)))){
                 i--;
-                System.out.println(s.charAt(j));
+//                System.out.println(s.charAt(j));
                 continue;
             }
             if(Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))) {
@@ -110,6 +113,10 @@ public class ValidPalindrome {
 
         s = ",,,,,,,,,,,,acva";
         output = false;
+        assertCode(s, output);
+
+        s = "\"Nella's simple hymn: \\\"I attain my help, Miss Allen.\\\"\"";
+        output = true;
         assertCode(s, output);
     }
 
