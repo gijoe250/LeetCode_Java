@@ -16,7 +16,7 @@ public class ValidPalindrome {
      */
 //    public static boolean isPalindrome(String s) {
 //        s = s.toLowerCase().replaceAll("[\\W_]", "");
-//        System.out.println(s + " Cleaned version");
+////        System.out.println(s + " Cleaned version");
 //        if(s.isEmpty()){
 //            return true;
 //        }
@@ -25,7 +25,7 @@ public class ValidPalindrome {
 //        }
 //
 //        for (int i=0, j=s.length()-1; i<s.length()/2; i++, j--){
-//            System.out.println(s.charAt(i) + " " + s.charAt(j));
+////            System.out.println(s.charAt(i) + " " + s.charAt(j));
 //            if(s.charAt(i) != s.charAt(j))
 //                return false;
 //        }
