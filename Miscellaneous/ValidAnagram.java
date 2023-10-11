@@ -13,6 +13,7 @@ public class ValidAnagram {
     }
     /** Submitted Code
      * Code to copy paste into LeetCode
+     * TODO: array style based on ASCII
      */
     public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()){
