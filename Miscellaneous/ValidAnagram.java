@@ -20,30 +20,23 @@ public class ValidAnagram {
         }
         HashMap<Character, Integer> anagram = new HashMap<>();
         for (int i=0; i < s.length(); i++){
-            if (anagram.containsKey(s.charAt(i))){
-                int tempValue = anagram.get(s.charAt(i));
-                if (tempValue + 1 == 0){
-                    anagram.remove(s.charAt(i));
-                }else {
-                    anagram.put(s.charAt(i), tempValue + 1);
-                }
-            }else {
-                anagram.put(s.charAt(i), 1);
+            int sTemp = anagram.getOrDefault(s.charAt(i), 0) + 1;
+            if(sTemp == 0){
+                anagram.remove(s.charAt(i));
             }
-            if (anagram.containsKey(t.charAt(i))){
-                int tempValue = anagram.get(t.charAt(i));
-                if (tempValue - 1 == 0){
-                    anagram.remove(t.charAt(i));
-                }else {
-                    anagram.put(t.charAt(i), tempValue - 1);
-                }
-            }else {
-                anagram.put(t.charAt(i), -1);
+            else {
+                anagram.put(s.charAt(i), sTemp);
+            }
+            int tTemp = anagram.getOrDefault(t.charAt(i), 0) - 1;
+            if(tTemp == 0){
+                anagram.remove(t.charAt(i));
+            }
+            else {
+                anagram.put(t.charAt(i), tTemp);
             }
         }
         return anagram.isEmpty();
     }
-
     /** Test Inputs
      * Add inputs to test
      */
