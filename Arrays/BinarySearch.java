@@ -15,44 +15,27 @@ public class BinarySearch {
      * Code to copy paste into LeetCode
      */
     public static int search(int[] nums, int target) {
-        if (nums.length == 1 && nums[0] == target){
-            System.out.println("pass " + target);
-            return 0;
-        }
+        int high = nums.length -1;
+        int low = 0;
+        int mid = (high-low)/2;
+        int count = 0;
 
-        int half = (nums.length-1)/2;
-        int count = nums.length/2;
-        int length = nums.length;
-        while(count >= 0){
-            if (half < 0 || half > nums.length -1){
-                return -1;
+        while (count != nums.length/2 + 1){
+            if (target == nums[mid]){
+                return mid;
             }
-            if (nums[half] == target){
-                System.out.println("pass " + target);
-                return half;
+            if (target < nums[mid]){
+                high = mid-1;
+                mid = (high + low)/2;
+                count++;
+                continue;
             }
-            if (nums[half] > target){
-                System.out.println(half + " " + nums[half] + " > " + target);
-                if (half - (nums.length-1-half)/2 == half){
-                    half--;
-                }
-                else {
-                    half = half - (nums.length-1-half)/2;
-                }
-                count--;
-            }
-            else if (nums[half] < target){
-                System.out.println(half + " " + nums[half] + " < " + target);
-                if (half + (nums.length-1-half)/2 == half){
-                    half++;
-                }
-                else {
-                    half = half + (nums.length-1-half)/2;
-                }
-                count--;
+            if (target > nums[mid]){
+                low = mid+1;
+                mid = (high + low)/2;
+                count++;
             }
         }
-        System.out.println("fail " + target + " " + nums[half]);
         return -1;
     }
     /** Test Inputs
