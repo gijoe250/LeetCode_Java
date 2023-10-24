@@ -25,6 +25,8 @@ public class FloodFill {
                     sc, sr, image[sr][sc], image[sr-1][sc]);
             image = floodFill(image, sr-1, sc, color);
         }
+        image[sr][sc] = color;
+        checkImage(image);
 //        //send starting color right
 //        if (sc+1 < image[sr].length && image[sr][sc+1] == image[sr][sc]){
 //            image = floodFill(image, sr, sc+1, color);
@@ -33,7 +35,11 @@ public class FloodFill {
 //        if (sr+1 < image.length && image[sr+1][sc] == image[sr][sc]){
 //            image = floodFill(image, sr+1, sc, color);
 //        }
-        image[sr][sc] = color;
+//        checkImage(image);
+        return image;
+    }
+
+    private static void checkImage(int[][] image) {
         for (int i =0; i < image.length; i++){
             for (int j =0; j < image[i].length; j++){
                 System.out.print(image[i][j]);
@@ -41,7 +47,6 @@ public class FloodFill {
             System.out.println();
         }
         System.out.println("------");
-        return image;
     }
 
     /** Test Inputs
