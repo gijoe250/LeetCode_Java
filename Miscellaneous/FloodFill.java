@@ -13,7 +13,24 @@ public class FloodFill {
      * Code to copy paste into LeetCode
      */
     public static int[][] floodFill(int[][] image, int sr, int sc, int color) {
-
+        //send starting color left
+        if (sc-1 >= 0 && image[sr][sc-1] == image[sr][sc]){
+            floodFill(image, sr, sc-1, color);
+        }
+        //send starting color up
+        if (sr-1 >= 0 && image[sr-1][sc] == image[sr][sc]){
+            floodFill(image, sr-1, sc, color);
+        }
+        //send starting color right
+        if (sc+1 < image[sr].length && image[sr][sc+1] == image[sr][sc]){
+            floodFill(image, sr, sc+1, color);
+        }
+        //send starting color down
+        if (sr+1 < image.length && image[sr+1][sc] == image[sr][sc]){
+            floodFill(image, sr+1, sc, color);
+        }
+        image[sr][sc] = color;
+        return image;
     }
 
     /** Test Inputs
