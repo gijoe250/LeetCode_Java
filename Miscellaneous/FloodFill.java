@@ -21,17 +21,26 @@ public class FloodFill {
         }
         //send starting color up
         if (sr-1 >= 0 && image[sr-1][sc] == image[sr][sc]){
+            System.out.printf("sc is %d sr is %d image color 1 is %d image color 2 is %d \n",
+                    sc, sr, image[sr][sc], image[sr-1][sc]);
             image = floodFill(image, sr-1, sc, color);
         }
-        //send starting color right
-        if (sc+1 < image[sr].length && image[sr][sc+1] == image[sr][sc]){
-            image = floodFill(image, sr, sc+1, color);
-        }
-        //send starting color down
-        if (sr+1 < image.length && image[sr+1][sc] == image[sr][sc]){
-            image = floodFill(image, sr+1, sc, color);
-        }
+//        //send starting color right
+//        if (sc+1 < image[sr].length && image[sr][sc+1] == image[sr][sc]){
+//            image = floodFill(image, sr, sc+1, color);
+//        }
+//        //send starting color down
+//        if (sr+1 < image.length && image[sr+1][sc] == image[sr][sc]){
+//            image = floodFill(image, sr+1, sc, color);
+//        }
         image[sr][sc] = color;
+        for (int i =0; i < image.length; i++){
+            for (int j =0; j < image[i].length; j++){
+                System.out.print(image[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println("------");
         return image;
     }
 
