@@ -13,48 +13,27 @@ public class FloodFill {
      * Code to copy paste into LeetCode
      */
     public static int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        int oldColor = image[sr][sc];
         //check if it matches the color
-        if (image[sr][sc] == color){
+        if (oldColor == color) {
             return image;
         }
-        //check if row and column are good
-        if (sc >= 0 && sc < image[sr].length && sr >=0 && sr < image.length){
-
-        }
-        //send starting color left
-        if (sc-1 >= 0 && image[sr][sc-1] == image[sr][sc]){
-            System.out.printf("sc is %d sr is %d image color 1 is %d image color 2 is %d \n",
-                    sc, sr, image[sr][sc], image[sr][sc-1]);
-            image = floodFill(image, sr, sc-1, color);
-        }
-        //send starting color up
-        if (sr-1 >= 0 && image[sr-1][sc] == image[sr][sc]){
-            System.out.printf("sc is %d sr is %d image color 1 is %d image color 2 is %d \n",
-                    sc, sr, image[sr][sc], image[sr-1][sc]);
-            image = floodFill(image, sr-1, sc, color);
-        }
-        image[sr][sc] = color;
-        checkImage(image);
-//        //send starting color right
-//        if (sc+1 < image[sr].length && image[sr][sc+1] == image[sr][sc]){
-//            image = floodFill(image, sr, sc+1, color);
-//        }
-//        //send starting color down
-//        if (sr+1 < image.length && image[sr+1][sc] == image[sr][sc]){
-//            image = floodFill(image, sr+1, sc, color);
-//        }
-//        checkImage(image);
+        fillFlood(image, sr, sc, oldColor, color);
         return image;
     }
 
-    private static void checkImage(int[][] image) {
-        for (int i =0; i < image.length; i++){
-            for (int j =0; j < image[i].length; j++){
-                System.out.print(image[i][j]);
-            }
-            System.out.println();
+    public static void fillFlood(int[][]image, int sr, int sc, int oldColor, int newColor) {
+        //check if everything is within bounds
+        if (sc < 0 || sr < 0 || sc == image[0].length || sr == image.length
+                || image[sr][sc] != oldColor) {
+            return;
         }
-        System.out.println("------");
+        image[sr][sc] = newColor;
+
+        fillFlood(image, sr - 1, sc, oldColor, newColor);
+        fillFlood(image, sr + 1, sc, oldColor, newColor);
+        fillFlood(image, sr, sc + 1, oldColor, newColor);
+        fillFlood(image, sr, sc - 1, oldColor, newColor);
     }
 
     /** Test Inputs
