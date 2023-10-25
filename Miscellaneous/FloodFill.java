@@ -13,6 +13,14 @@ public class FloodFill {
      * Code to copy paste into LeetCode
      */
     public static int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        //check if it matches the color
+        if (image[sr][sc] == color){
+            return image;
+        }
+        //check if row and column are good
+        if (sc >= 0 && sc < image[sr].length && sr >=0 && sr < image.length){
+
+        }
         //send starting color left
         if (sc-1 >= 0 && image[sr][sc-1] == image[sr][sc]){
             System.out.printf("sc is %d sr is %d image color 1 is %d image color 2 is %d \n",
