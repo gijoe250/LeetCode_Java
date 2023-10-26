@@ -18,11 +18,11 @@ public class FloodFill {
         if (oldColor == color) {
             return image;
         }
-        fillFlood(image, sr, sc, oldColor, color);
+        fillFloodDFS(image, sr, sc, oldColor, color);
         return image;
     }
 
-    public static void fillFlood(int[][]image, int sr, int sc, int oldColor, int newColor) {
+    public static void fillFloodDFS(int[][]image, int sr, int sc, int oldColor, int newColor) {
         //check if everything is within bounds
         if (sc < 0 || sr < 0 || sc == image[0].length || sr == image.length
                 || image[sr][sc] != oldColor) {
@@ -30,10 +30,10 @@ public class FloodFill {
         }
         image[sr][sc] = newColor;
 
-        fillFlood(image, sr - 1, sc, oldColor, newColor);
-        fillFlood(image, sr + 1, sc, oldColor, newColor);
-        fillFlood(image, sr, sc + 1, oldColor, newColor);
-        fillFlood(image, sr, sc - 1, oldColor, newColor);
+        fillFloodDFS(image, sr - 1, sc, oldColor, newColor);
+        fillFloodDFS(image, sr + 1, sc, oldColor, newColor);
+        fillFloodDFS(image, sr, sc + 1, oldColor, newColor);
+        fillFloodDFS(image, sr, sc - 1, oldColor, newColor);
     }
 
     /** Test Inputs
