@@ -45,6 +45,7 @@ public class LowestCommonAncestor {
     private static TreeNode qRecursion(Queue<TreeNode> queue, TreeNode travel, int qValue, TreeNode answer){
         //check each value to see if in queue
         //stop if itself or value does not exist in queue
+        System.out.println("queue " + queue.element().val);
         TreeNode check = queue.remove();
         if (check.val == travel.val){
             answer = check;
@@ -59,6 +60,7 @@ public class LowestCommonAncestor {
     private static void pRecursion(Queue<TreeNode> queue, TreeNode travel, int pValue){
         //store each value hit by p in a queue
         //stop if matching value is hit
+        System.out.println("travel " + travel.val);
         if (pValue == travel.val){
             queue.add(travel);
         }
@@ -77,14 +79,19 @@ public class LowestCommonAncestor {
         //        Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
         //        Output: 6
         //        Explanation: The LCA of nodes 2 and 8 is 6.
-        TreeNode Lleaf1 = new TreeNode(0);
-        TreeNode Rleaf1 = new TreeNode(4);
-        TreeNode Lleaf2 = new TreeNode(7);
-        TreeNode Rleaf2 = new TreeNode(9);
-        TreeNode Lbranch = new TreeNode(2,Lleaf1,Rleaf1);
-        TreeNode Rbranch = new TreeNode(8,Lleaf2,Rleaf2);
-        TreeNode Root = new TreeNode(6,Lbranch,Rbranch);
-        assertCode(Root, Lbranch, Rbranch, Root);
+        TreeNode Lleaf0 = new TreeNode(0);
+        TreeNode Rleaf4 = new TreeNode(4);
+        TreeNode Lleaf7 = new TreeNode(7);
+        TreeNode Rleaf9 = new TreeNode(9);
+        TreeNode Lbranch2 = new TreeNode(2,Lleaf0,Rleaf4);
+        TreeNode Rbranch8 = new TreeNode(8,Lleaf7,Rleaf9);
+        TreeNode Root = new TreeNode(6,Lbranch2,Rbranch8);
+        assertCode(Root, Lbranch2, Rbranch8, Root);
+
+        //        Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+        //        Output: 2
+        //        Explanation: The LCA of nodes 2 and 8 is 6.
+        assertCode(Root, Lbranch2, Rleaf4, Root);
     }
 
     /** Assertions
