@@ -21,26 +21,40 @@ public class LowestCommonAncestor {
      *     TreeNode(int x) { val = x; }
      * }
      */
+//    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+//        TreeNode answer = new TreeNode();
+//        //create variables
+//        Queue<TreeNode> queue = new LinkedList<>();
+//        //call a recursive function for p
+//        if (root.val == p.val){
+//            queue.add(root);
+//        }else {
+//            //traverse p down the tree
+//            pRecursion(queue, root, p.val);
+//        }
+//        //clear the queue with q
+//        answer = qRecursion(queue, root, q.val, answer);
+//        //return answer
+//        return answer;
+//    }
+
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        TreeNode answer = new TreeNode();
-        //create variables
-        Queue<TreeNode> queue = new LinkedList<>();
-        //call a recursive function for p
-        if (root.val == p.val){
-            queue.add(root);
-        }else {
-            //traverse p down the tree
-            pRecursion(queue, root, p.val);
+        if (root.val == p.val || root.val == q.val){
+            return root;
         }
-        //clear the queue with q
-        answer = qRecursion(queue, root, q.val, answer);
-        //return answer
-        return answer;
+        else if (root.val < p.val && root.val < q.val){
+            root = lowestCommonAncestor(root.right, p, q);
+        }
+        else if (root.val > p.val && root.val > q.val){
+            root = lowestCommonAncestor(root.left, p, q);
+        }
+
+        return root;
     }
 
-    /**
-     * Traverse p and store tree values in queue
-     */
+        /**
+         * Traverse p and store tree values in queue
+         */
     private static TreeNode qRecursion(Queue<TreeNode> queue, TreeNode travel, int qValue, TreeNode answer){
         //check each value to see if in queue
         //stop if itself or value does not exist in queue
