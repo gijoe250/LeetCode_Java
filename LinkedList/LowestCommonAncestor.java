@@ -3,7 +3,7 @@ package LinkedList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class lowestCommonAncestor {
+public class LowestCommonAncestor {
     /** The LeetCode link
      * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/
      */
