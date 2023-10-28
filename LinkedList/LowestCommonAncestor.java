@@ -34,7 +34,6 @@ public class LowestCommonAncestor {
         }
         //clear the queue with q
         answer = qRecursion(queue, root, q.val, answer);
-        System.out.println(answer.val + "main answer");
         //return answer
         return answer;
     }
@@ -47,24 +46,20 @@ public class LowestCommonAncestor {
         //stop if itself or value does not exist in queue
         if (!queue.isEmpty()){
             TreeNode check = queue.remove();
-            System.out.println(check.val + " travel " + travel.val);
             if (check.val == travel.val){
                 answer = check;
-                System.out.println(answer.val + " " + qValue + " " + travel.val);
                 if (qValue > travel.val){
-                    qRecursion(queue, travel.right, qValue, answer);
+                    answer = qRecursion(queue, travel.right, qValue, answer);
                 }else if(qValue < travel.val){
-                    qRecursion(queue, travel.left, qValue, answer);
+                    answer = qRecursion(queue, travel.left, qValue, answer);
                 }
             }
         }
-        System.out.println(answer.val + "before main");
         return answer;
     }
     private static void pRecursion(Queue<TreeNode> queue, TreeNode travel, int pValue){
         //store each value hit by p in a queue
         //stop if matching value is hit
-        System.out.println("travel " + travel.val);
         if (pValue == travel.val){
             queue.add(travel);
         }
