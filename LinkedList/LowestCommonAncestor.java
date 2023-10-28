@@ -21,8 +21,8 @@ public class LowestCommonAncestor {
      *     TreeNode(int x) { val = x; }
      * }
      */
-    public static TreeNode lowestCommonAnc(TreeNode root, TreeNode p, TreeNode q) {
-        TreeNode answer = null;
+    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        TreeNode answer = new TreeNode();
         //create variables
         Queue<TreeNode> queue = new LinkedList<>();
         //call a recursive function for p
@@ -33,7 +33,7 @@ public class LowestCommonAncestor {
             pRecursion(queue, root, p.val);
         }
         //clear the queue with q
-        answer = qRecursion(queue, root, q, answer);
+        answer = qRecursion(queue, root, q.val, answer);
 
         //return answer
         return answer;
@@ -91,7 +91,8 @@ public class LowestCommonAncestor {
      * assertions for code
      */
     private static void assertCode(TreeNode root, TreeNode p, TreeNode q, TreeNode output){
-        TreeNode answer =  lowestCommonAnc(root, p, q);
+        TreeNode answer =  lowestCommonAncestor(root, p, q);
+        System.out.println(output.val + " " + answer.val);
         assert output == answer: String.format("No match: expected output %d != actual output %d", output.val, answer.val);
     }
 }

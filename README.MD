@@ -11,7 +11,9 @@ and a section to add inputs.
     * Ex:  java -ea ./Arrays/RemoveDuplicatesFromSortedArray.java
   * if multiple classes are being used, first run the following:
     * javac <CLASSES_TO_COMPILE>
-      * Ex: javac ./LinkedList/*.java
+      * Ex: javac ./LinkedList/MergeTwoSortedLists.java ./LinkedList/ListNode.java
+    * if the classes are all in the same directory, compiling just the file with the main is fine
+      * Ex:  javac ./LinkedList/MergeTwoSortedLists.java
   * then run the following, specifying the class with the main method:
     * java -ea <CLASS_WITH_MAIN>
       * Ex: java -ea LinkedList.MergeTwoSortedLists
