@@ -34,7 +34,7 @@ public class LowestCommonAncestor {
         }
         //clear the queue with q
         answer = qRecursion(queue, root, q.val, answer);
-
+        System.out.println(answer.val + "main answer");
         //return answer
         return answer;
     }
@@ -45,16 +45,20 @@ public class LowestCommonAncestor {
     private static TreeNode qRecursion(Queue<TreeNode> queue, TreeNode travel, int qValue, TreeNode answer){
         //check each value to see if in queue
         //stop if itself or value does not exist in queue
-        System.out.println("queue " + queue.element().val);
-        TreeNode check = queue.remove();
-        if (check.val == travel.val){
-            answer = check;
-            if (qValue > travel.val){
-                qRecursion(queue, travel.right, qValue, answer);
-            }else {
-                qRecursion(queue, travel.left, qValue, answer);
+        if (!queue.isEmpty()){
+            TreeNode check = queue.remove();
+            System.out.println(check.val + " travel " + travel.val);
+            if (check.val == travel.val){
+                answer = check;
+                System.out.println(answer.val + " " + qValue + " " + travel.val);
+                if (qValue > travel.val){
+                    qRecursion(queue, travel.right, qValue, answer);
+                }else if(qValue < travel.val){
+                    qRecursion(queue, travel.left, qValue, answer);
+                }
             }
         }
+        System.out.println(answer.val + "before main");
         return answer;
     }
     private static void pRecursion(Queue<TreeNode> queue, TreeNode travel, int pValue){
@@ -91,7 +95,7 @@ public class LowestCommonAncestor {
         //        Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
         //        Output: 2
         //        Explanation: The LCA of nodes 2 and 8 is 6.
-        assertCode(Root, Lbranch2, Rleaf4, Root);
+        assertCode(Root, Lbranch2, Rleaf4, Lbranch2);
     }
 
     /** Assertions
@@ -99,7 +103,6 @@ public class LowestCommonAncestor {
      */
     private static void assertCode(TreeNode root, TreeNode p, TreeNode q, TreeNode output){
         TreeNode answer =  lowestCommonAncestor(root, p, q);
-        System.out.println(output.val + " " + answer.val);
         assert output == answer: String.format("No match: expected output %d != actual output %d", output.val, answer.val);
     }
 }
