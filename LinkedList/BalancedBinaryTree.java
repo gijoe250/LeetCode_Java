@@ -13,14 +13,22 @@ public class BalancedBinaryTree {
      * Code to copy paste into LeetCode
      */
     public static boolean isBalanced(TreeNode root) {
-        //create a function to traverse the tree
         //track a left count and right count
-
-        //return if next leaf is null
+        int[] count = new int[]{0,0};
+        //create a function to traverse the tree
+        //return answer
+        return countNodes(root, count);
     }
 
-    private int[] countNodes(TreeNode node, int leftCount, int rightCount){
-
+    /**
+     * The range of nodes is 0 to 5000
+     * node can be positive or negative
+     */
+    private static boolean countNodes(TreeNode node, int[] count){
+        //edge case if null
+        if (node == null){
+            return true;
+        }
     }
 
     /** Test Inputs
@@ -33,9 +41,25 @@ public class BalancedBinaryTree {
         TreeNode Rleaf2 = new TreeNode(7);
         TreeNode Lbranch = new TreeNode(9);
         TreeNode Rbranch = new TreeNode(20,Lleaf2,Rleaf2);
-        TreeNode Root = new TreeNode(3,Lbranch,Rbranch);
+        TreeNode root = new TreeNode(3,Lbranch,Rbranch);
         boolean output = true;
-        assertCode(Root, output);
+        assertCode(root, output);
+//        Input: root = [1,2,2,3,3,null,null,4,4]
+//        Output: false
+        TreeNode Lleaf3 = new TreeNode(4);
+        TreeNode Rleaf3 = new TreeNode(4);
+        TreeNode Lleaf1 = new TreeNode(3, Lleaf3, Rleaf3);
+        TreeNode Rleaf1 = new TreeNode(3);
+        Lbranch = new TreeNode(2, Lleaf1, Rleaf1);
+        Rbranch = new TreeNode(2);
+        root = new TreeNode(1,Lbranch,Rbranch);
+        output = false;
+        assertCode(root, output);
+
+//        Input: root = []
+//        Output: true
+        output = true;
+        assertCode(null, output);
     }
 
     /** Assertions
