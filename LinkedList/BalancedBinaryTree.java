@@ -13,22 +13,26 @@ public class BalancedBinaryTree {
      * Code to copy paste into LeetCode
      */
     public static boolean isBalanced(TreeNode root) {
+        //edge case for empty tree
+        if (root == null){
+            return true;
+        }
         //track a left count and right count
-        int[] count = new int[]{0,0};
         //create a function to traverse the tree
+        countNodes(root);
         //return answer
-        return countNodes(root, count);
+        return false;
     }
 
     /**
      * The range of nodes is 0 to 5000
      * node can be positive or negative
      */
-    private static boolean countNodes(TreeNode node, int[] count){
-        //edge case if null
-        if (node == null){
-            return true;
-        }
+    private static int countNodes(TreeNode node){
+        int l = totalNodes(node.left);
+        int r = totalNodes(node.right);
+
+        return 1 + l + r;
     }
 
     /** Test Inputs
