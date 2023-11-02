@@ -29,6 +29,7 @@ public class BalancedBinaryTree {
      * node can be positive or negative
      */
     private static int countNodes(TreeNode node){
+        //need to do a comparison for this
         int l = totalNodes(node.left);
         int r = totalNodes(node.right);
 
