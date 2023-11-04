@@ -31,6 +31,7 @@ public class BalancedBinaryTree {
     private static int countNodes(TreeNode node){
         //need to do a comparison for this
         //need to make sure count carries correctly
+        //still thinking on this
         int l = totalNodes(node.left);
         int r = totalNodes(node.right);
 
