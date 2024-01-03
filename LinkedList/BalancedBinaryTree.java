@@ -29,11 +29,11 @@ public class BalancedBinaryTree {
         if (node == null)  return 0;
         int leftHeight = trackHeight(node.left);
         int rightHeight = trackHeight(node.right);
-        // In case of left subtree or right subtree unbalanced, return -1
+        // Means the check failed already
         if (leftHeight == -1 || rightHeight == -1)  return -1;
-        // If their heights differ by more than ‘1’, return -1
+        // If there is a great difference in height, the tree is unbalanced
         if (Math.abs(leftHeight - rightHeight) > 1)  return -1;
-        // Otherwise, return the height of this subtree as max(leftHeight, rightHight) + 1...
+        // return the highest current height plus one
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
