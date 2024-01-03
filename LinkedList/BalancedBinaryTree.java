@@ -17,25 +17,24 @@ public class BalancedBinaryTree {
         if (root == null){
             return true;
         }
-        //track a left count and right count
-        //create a function to traverse the tree
-        countNodes(root);
-        //return answer
-        return false;
+        // return if tree balance is true or false
+        return trackHeight(root) != -1;
     }
 
     /**
      * The range of nodes is 0 to 5000
      * node can be positive or negative
      */
-    private static int countNodes(TreeNode node){
-        //need to do a comparison for this
-        //need to make sure count carries correctly
-        //comment here
-        int l = countNodes(node.left);
-        int r = countNodes(node.right);
-
-        return 1 + l + r;
+    private static int trackHeight(TreeNode node){
+        if (node == null)  return 0;
+        int leftHeight = trackHeight(node.left);
+        int rightHeight = trackHeight(node.right);
+        // In case of left subtree or right subtree unbalanced, return -1
+        if (leftHeight == -1 || rightHeight == -1)  return -1;
+        // If their heights differ by more than ‘1’, return -1
+        if (Math.abs(leftHeight - rightHeight) > 1)  return -1;
+        // Otherwise, return the height of this subtree as max(leftHeight, rightHight) + 1...
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 
     /** Test Inputs
