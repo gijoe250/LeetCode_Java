@@ -13,6 +13,9 @@ public class LinkedListCycle {
      * Code to copy paste into LeetCode
      */
     public boolean hasCycle(ListNode head) {
+        //if next is null return false
+        //maybe have another function to call itself if not false
+        //use size to get the size of the linked list, if size is ever exceeded, there is a loop
     }
 
     /** Test Inputs
