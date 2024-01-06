@@ -15,7 +15,9 @@ public class LinkedListCycle {
     public boolean hasCycle(ListNode head) {
         //if next is null return false
         //maybe have another function to call itself if not false
-        //use size to get the size of the linked list, if size is ever exceeded, there is a loop
+        //TODO: 1st idea use size to get the size of the linked list, if size is ever exceeded, there is a loop
+        //TODO: 2nd idea place a pointer on each location or a traveling point passed and store the value. if the value is found, check if the address matches the pointer
+        //TODO: 3rd idea have a key value pair and store the value and address. if both value is hit, compare the addresses
     }
 
     /** Test Inputs
