@@ -26,10 +26,10 @@ public class LinkedListCycle {
         ListNode tracker = head;
         //iterate through list exiting if a null is hit
         while(tracker.next != null){
-            //check if current value exists
-            //if so check if addresses equal each other
+            //check if current value exists in dictionary
+            //if so check if addresses of current pointer equals stored pointer
             //on yes, return true
-            //TODO:on no, store temp value in key value pair
+            //TODO:on no, store temp value and pointer in key value pair
             //iterate to next node
             tracker = tracker.next;
         }
