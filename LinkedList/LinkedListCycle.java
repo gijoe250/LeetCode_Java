@@ -1,7 +1,6 @@
 package LinkedList;
 
-import java.util.LinkedList;
-import javafx.util;
+import java.util.HashMap;
 
 public class LinkedListCycle {
     /** The LeetCode link
@@ -31,9 +30,8 @@ public class LinkedListCycle {
             //if so check if addresses of current pointer equals stored pointer
             //on yes, return true
             //TODO:on no, store temp value and pointer in key value pair
-            Pair<Integer, ListNode> pair = new Pair<>(1, tracker);
-            Integer key = pair.getKey();
-            ListNode value = pair.getValue();
+            HashMap<Integer, ListNode> map = new HashMap<Integer, ListNode>();
+            map.put(tracker.val, tracker);
             //iterate to next node
             tracker = tracker.next;
         }
