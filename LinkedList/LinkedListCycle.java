@@ -22,15 +22,15 @@ public class LinkedListCycle {
         //create new pointer
         ListNode tracker = head;
         //create hashmap
-        HashMap<Integer, ListNode> map = new HashMap<Integer, ListNode>();
+        HashMap<ListNode, Integer> map = new HashMap<ListNode, Integer>();
         //iterate through list exiting if a null is hit
         while(tracker.next != null){
             //check if current value exists in dictionary
-            if ( map.containsValue(tracker) ){
+            if ( map.containsKey(tracker) ){
                 //cycle exists if so
                 return true;
             }
-            map.put(tracker.val, tracker);
+            map.put(tracker, tracker.val);
             //iterate to next node
             tracker = tracker.next;
         }
