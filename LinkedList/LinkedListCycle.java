@@ -19,18 +19,17 @@ public class LinkedListCycle {
         if (head == null){
             return false;
         }
-        //1st idea use size to get the size of the linked list, if size is ever exceeded, there is a loop
-        //check size of linked-list; misunderstood what size does: failed
-        //TODO: 3rd idea have a key value pair and store the value and address. if both value is hit, compare the addresses
         //create new pointer
         ListNode tracker = head;
+        //create hashmap
+        HashMap<Integer, ListNode> map = new HashMap<Integer, ListNode>();
         //iterate through list exiting if a null is hit
         while(tracker.next != null){
             //check if current value exists in dictionary
-            //if so check if addresses of current pointer equals stored pointer
-            //on yes, return true
-            //TODO:on no, store temp value and pointer in key value pair
-            HashMap<Integer, ListNode> map = new HashMap<Integer, ListNode>();
+            if ( map.containsValue(tracker) ){
+                //cycle exists if so
+                return true;
+            }
             map.put(tracker.val, tracker);
             //iterate to next node
             tracker = tracker.next;
