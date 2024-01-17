@@ -38,6 +38,7 @@ public class LinkedListCycle {
         return false;
     }
     //slow and fast pointer goes here
+    //Slow pointer will go to next value and the fast pointer will skipp 2 values
 
     /** Test Inputs
      * Add inputs to test
