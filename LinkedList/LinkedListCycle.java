@@ -40,6 +40,27 @@ public class LinkedListCycle {
     //slow and fast pointer goes here
     //Slow pointer will go to next value and the fast pointer will skipp 2 values
 
+    public boolean hasCycle2(ListNode head) {
+        //base case
+        if (head == null){
+            return false;
+        }
+        //create new pointer
+        ListNode trackerSlow = head;
+        ListNode trackerFast = head;
+
+        //iterate through list exiting if a null is hit
+        while(trackerSlow.next != null && trackerSlow.next.next != null){
+            trackerSlow = trackerSlow.next;
+            trackerFast = trackerSlow.next.next;
+            //if these 2 pointers meet, then it is a cycle
+            if (trackerSlow == trackerFast){
+                return true;
+            }
+        }
+        //since it has exited the loop, it is false
+        return false;
+    }
     /** Test Inputs
      * Add inputs to test
      */
