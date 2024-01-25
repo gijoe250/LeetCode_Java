@@ -39,7 +39,6 @@ public class LinkedListCycle {
     }
     //slow and fast pointer goes here
     //Slow pointer will go to next value and the fast pointer will skipp 2 values
-    //TODO: time limit exceeded
     public boolean hasCycle2(ListNode head) {
         //base case
         if (head == null){
@@ -50,9 +49,10 @@ public class LinkedListCycle {
         ListNode trackerFast = head;
 
         //iterate through list exiting if a null is hit
-        while(trackerSlow.next != null && trackerSlow.next.next != null){
+        //must check initial states before a .next state in case the initial state is null
+        while(trackerSlow != null && trackerFast != null && trackerFast.next != null){
             trackerSlow = trackerSlow.next;
-            trackerFast = trackerSlow.next.next;
+            trackerFast = trackerFast.next.next;
             //if these 2 pointers meet, then it is a cycle
             if (trackerSlow == trackerFast){
                 return true;
