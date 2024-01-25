@@ -39,7 +39,7 @@ public class LinkedListCycle {
     }
     //slow and fast pointer goes here
     //Slow pointer will go to next value and the fast pointer will skipp 2 values
-    //TODO: testing second method of problem
+    //TODO: time limit exceeded
     public boolean hasCycle2(ListNode head) {
         //base case
         if (head == null){
